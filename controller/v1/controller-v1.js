@@ -13,6 +13,7 @@ export let renderShoeList = (shoeArr) => {
                            <td>
                                 <button class="btn btn-danger" onclick=deleteShoe(${ma})>Xóa</button>
                                 <button class="btn btn-warning" onclick=EditShoe(${ma})>Sửa</button>
+                                <button class="btn btn-success"  onclick=addShoeGH(${ma})>Thêm giỏ hàng</button>
                            </td>
                   </tr>`;
     contentHTML = contentHTML + trString;
