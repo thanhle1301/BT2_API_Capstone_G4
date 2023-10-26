@@ -1,11 +1,12 @@
 import { https } from "../../service/service.js";
-import { renderShoeList } from "./controller-v1.js";
+import { getDataFrom, renderShoeList, showDataFrom } from "./controller-v1.js";
+
 function fetchShoeList() {
   https
     .get("/food")
     .then((res) => {
       console.log(res.data);
-      renderShoeList(res.data);
+      renderShoeList(res.data.reverse());
     })
     .catch((err) => {
       console.log(err);
@@ -24,4 +25,40 @@ function deleteShoe(id) {
     });
 }
 window.deleteShoe = deleteShoe;
-window.addShoe = () => {};
+window.addShoe = () => {
+  let shoe = getDataFrom();
+  https
+    .post("/food", shoe)
+    .then((res) => {
+      fetchShoeList();
+      $("#exampleModal").modal("hide");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+window.editShoe = (id) => {
+  $("#exampleModal").modal("show");
+  https
+    .get(`/food/${id}`)
+    .then((res) => {
+      console.log("Sửa thành công", id, res.data);
+      showDataFrom(res.data);
+    })
+    .catch((err) => {
+      console.log("😃 - file: main-v1.js:50 - err:", err);
+    });
+};
+window.updateShoe = () => {
+  let shoe = getDataFrom();
+  https
+    .put(`/food/${shoe.ma}`, shoe)
+    .then((res) => {
+      fetchShoeList();
+      $("#exampleModal").modal("hide");
+    })
+    .catch((err) => {
+      console.log("😃 - file: main-v1.js:61 - err:", err);
+    });
+};
