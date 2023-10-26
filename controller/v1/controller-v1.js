@@ -1,10 +1,11 @@
 export let renderShoeList = (shoeArr) => {
   let contentHTML = "";
   shoeArr.forEach((shoe) => {
-    let { ma, ten, gia, khuyenMai, hinhAnh, moTa, tinhTrang } = shoe;
+    let { ma, ten, loai, gia, khuyenMai, hinhAnh, moTa, tinhTrang } = shoe;
     let trString = `<tr>
                            <td>${ma}</td>
                            <td>${ten}</td>
+                           <td>${loai}</td>
                            <td>${gia}</td>
                            <td>${khuyenMai}</td>
                            <td>0</td>
