@@ -24,3 +24,4 @@ function deleteShoe(id) {
     });
 }
 window.deleteShoe = deleteShoe;
+window.addShoe = () => {};

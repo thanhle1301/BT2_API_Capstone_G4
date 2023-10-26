@@ -76,7 +76,20 @@
           </ol>
         </nav>
         <div class="danhsach_noidung">
-          <h2>Danh sách giày</h2>
+          <div class="row">
+            <h2 class="col-10">Danh sách giày</h2>
+            <div class="col-2">
+              <button
+                id="btnThem"
+                type="button"
+                class="btn btn-warning mb-3 text-white"
+                data-toggle="modal"
+                data-target="#exampleModal"
+              >
+                Thêm giày mới
+              </button>
+            </div>
+          </div>
           <div class="table-responsive foodTable">
             <table class="table table-striped table-sm">
               <thead>
@@ -118,14 +131,14 @@
             </button>
           </div>
           <div class="modal-body">
-            <form class="needs-validation" id="foodForm">
+            <form class="needs-validation" id="shoeForm">
               <div class="row">
                 <div class="col-md-6 mb-3">
-                  <label for="foodID">Mã Món</label>
+                  <label for="foodID">Mã</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="foodID"
+                    id="shoeID"
                     placeholder="Nhập ID"
                     value=""
                     required
@@ -133,35 +146,35 @@
                   <div id="invalidID" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="tenMon">Tên Món</label>
+                  <label for="tenShoe">Tên</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="tenMon"
-                    placeholder="Nhập tên món"
+                    id="tenShoe"
+                    placeholder="Nhập tên"
                     required
                   />
                   <div id="invalidTen" class="invalid-form"></div>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="loai">Loại Món</label>
+                  <label for="loai">Loại</label>
                   <select
                     class="custom-select d-block w-100"
                     id="loai"
                     required
                   >
                     <option value="">Chọn loại</option>
-                    <option value="loai1">Chay</option>
-                    <option value="loai2">Mặn</option>
+                    <option value="loai1">Tốt</option>
+                    <option value="loai2">Trung bình</option>
                   </select>
                   <div id="invalidLoai" class="invalid-feedback"></div>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="giaMon">Giá Món</label>
+                  <label for="giaShoe">Giá </label>
                   <input
                     type="text"
                     class="form-control"
-                    id="giaMon"
+                    id="giaShoe"
                     placeholder="Nhập giá"
                     value=""
                     required
@@ -197,11 +210,11 @@
               </div>
               <div class="mb-3">
                 <div class="form-group">
-                  <label for="hinhMon">Hình Món Ăn</label>
+                  <label for="hinhMon">Hình ảnh</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="hinhMon"
+                    id="hinhShoe"
                     placeholder="Nhập hình ảnh"
                     value=""
                     required

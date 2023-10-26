@@ -20,3 +20,28 @@ export let renderShoeList = (shoeArr) => {
   });
   document.getElementById("tbodyShoe").innerHTML = contentHTML;
 };
+
+let getData = (idValue) => document.getElementById(idValue).value;
+export let layThongTinTuForm = () => {
+  let ma = getData("shoeID");
+  let ten = getData("tenShoe");
+  let loai = getData("loai");
+  let gia = getData("giaShoe");
+  let khuyenMai = getData("khuyenMai");
+  let tinhTrang = getData("tinhTrang");
+  let hinhAnh = getData("hinhShoe");
+  let moTa = getData("moTa");
+  return {
+    ma,
+    ten,
+    loai,
+    gia,
+    khuyenMai,
+    tinhTrang,
+    hinhAnh,
+    moTa,
+    tinhGKM: function () {
+      return this.gia * (1 - this.khuyenMai);
+    },
+  };
+};
