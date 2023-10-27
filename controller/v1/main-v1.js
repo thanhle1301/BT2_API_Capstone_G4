@@ -62,19 +62,3 @@ window.updateShoe = () => {
       console.log("😃 - file: main-v1.js:61 - err:", err);
     });
 };
-// window.addShoeGH = (id) => {
-//   https
-//     .get(`/shoe/${id}`) // thay API
-//     .then((res) => {
-//       // Thay fetch mới bên giỏ hàng
-//       console.log("them gio hang ok"res.data, id);
-//       Swal.fire(
-//         "Thêm vào giỏ hàng thành công!",
-//         "You clicked the button!",
-//         "success"
-//       );
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
