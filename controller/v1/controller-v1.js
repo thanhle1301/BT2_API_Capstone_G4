@@ -1,20 +1,24 @@
 export let renderShoeList = (shoeArr) => {
   let contentHTML = "";
   shoeArr.forEach((shoe) => {
-    let { ma, ten, loai, gia, khuyenMai, hinhAnh, moTa, tinhTrang } = shoe;
+    let { ma, ten, loai, gia, khuyenMai, hinhAnh, moTa, tinhTrang, tinhGKM } =
+      shoe;
 
     let trString = `<tr>
                            <td>${ma}</td>
                            <td>${ten}</td>
                            <td>${loai}</td>
-                           <td>${gia}</td>
-                           <td>${khuyenMai}</td>
-                           <td>0</td>
-                           <td>${tinhTrang}</td>
+                           <td>${gia} USD</td>
+                           <td class="pl-4">${khuyenMai} %</td>
+                           
+                           <td class="pl-4">${tinhTrang}</td>
                            <td>
                                 <button class="btn btn-danger" onclick=deleteShoe(${ma})>Xóa</button>
                                 <button class="btn btn-warning" onclick=editShoe(${ma})>Sửa</button>
-                                <button class="btn btn-success"  onclick=addShoeGH(${ma})>Thêm giỏ hàng</button>
+                           </td>
+                           <td>
+                                <button class="btn btn-success"  onclick=ShowDetail(${ma})>Xem chi tiêt</button>
+
                            </td>
                   </tr>`;
     contentHTML = contentHTML + trString;
@@ -45,14 +49,23 @@ export let getDataFrom = () => {
     },
   };
 };
+// loai : true tốt, false thường
+const loaiTot = "Loại 1";
+const loaiThuong = "Loại 2";
+const tot = true;
+// tinh trang : true Còn, false Hết
+const tinhTrangCon = "1";
+const tinhTrangHet = "0";
+const con = true;
 export let showDataFrom = (shoe) => {
   let { ma, ten, loai, gia, khuyenMai, hinhAnh, moTa, tinhTrang } = shoe;
   document.getElementById("shoeID").value = ma;
   document.getElementById("tenShoe").value = ten;
-  document.getElementById("loai").value = loai;
+  document.getElementById("loai").value = loai == tot ? loaiTot : loaiThuong;
   document.getElementById("giaShoe").value = gia;
   document.getElementById("khuyenMai").value = khuyenMai;
-  document.getElementById("tinhTrang").value = tinhTrang;
+  document.getElementById("tinhTrang").value =
+    tinhTrang == true ? tinhTrangCon : tinhTrangHet;
   document.getElementById("hinhShoe").value = hinhAnh;
   document.getElementById("moTa").value = moTa;
 };

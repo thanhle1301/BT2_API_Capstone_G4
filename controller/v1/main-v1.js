@@ -5,7 +5,7 @@ function fetchShoeList() {
   https
     .get("/shoe")
     .then((res) => {
-      console.log(res.data);
+      console.log("res.data", res.data);
       renderShoeList(res.data.reverse());
     })
     .catch((err) => {
@@ -37,19 +37,29 @@ window.addShoe = () => {
       console.log(err);
     });
 };
-
+// window.addShoe = (id) => {
+//   $("#exampleModal").modal("show");
+//   https
+//     .get(`/shoe/${id}`)
+//     .then((res) => {
+//       showDataFrom(res.data);
+//     })
+//     .catch((err) => {
+//       console.log("😃 - file: main-v1.js:50 - err:", err);
+//     });
+// };
 window.editShoe = (id) => {
   $("#exampleModal").modal("show");
   https
     .get(`/shoe/${id}`)
     .then((res) => {
-      console.log("Sửa thành công", id, res.data);
       showDataFrom(res.data);
     })
     .catch((err) => {
       console.log("😃 - file: main-v1.js:50 - err:", err);
     });
 };
+
 window.updateShoe = () => {
   let shoe = getDataFrom();
   https
@@ -60,5 +70,37 @@ window.updateShoe = () => {
     })
     .catch((err) => {
       console.log("😃 - file: main-v1.js:61 - err:", err);
+    });
+};
+///////////////////// giỏ hàng
+// bật chi tiết để thêm vào giỏ hàng
+window.ShowDetail = (id) => {
+  $("#exampleModal").modal("show");
+  https
+    .get(`/shoe/${id}`)
+    .then((res) => {
+      showDataFrom(res.data);
+    })
+    .catch((err) => {
+      console.log("😃 - file: main-v1.js:50 - err:", err);
+    });
+};
+// thêm vào giỏ hàng
+window.addShopShoe = () => {
+  let shopShoe = getDataFrom();
+
+  https
+    .post("shoeGH", shopShoe)
+    .then((res) => {
+      console.log("😃 - file: main-v1.js:45 - then - res:", res);
+      $("#exampleModal").modal("hide");
+      Swal.fire(
+        "Thêm vào giỏ hàng thành công!",
+        "You clicked the button!",
+        "success"
+      );
+    })
+    .catch((err) => {
+      console.log(err);
     });
 };
